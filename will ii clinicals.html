@@ -11,7 +11,7 @@
 
 <tw-story></tw-story>
 
-<tw-storydata name="will ii clinicals" startnode="98" creator="Twine" creator-version="2.3.8" ifid="ECE6B19C-F4EF-4BCF-B232-B2EA182979C1" zoom="0.6" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="AR" color="purple"></tw-tag>,<tw-tag name="AS" color="yellow"></tw-tag>,<tw-tag name="MR" color="green"></tw-tag>,<tw-tag name="Severe_AR" color="gray"></tw-tag>,<tw-tag name="mitral_stenosis" color="orange"></tw-tag><tw-passagedata pid="1" name="Will ii cardiovascular" tags="" position="2922,4" size="100,100">A pretend- examination aid to help with summarizing
+<tw-storydata name="will ii clinicals" startnode="98" creator="Twine" creator-version="2.3.8" ifid="ECE6B19C-F4EF-4BCF-B232-B2EA182979C1" zoom="0.25" format="Harlowe" format-version="3.1.0" options="" hidden><style role="stylesheet" id="twine-user-stylesheet" type="text/twine-css"></style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="AR" color="purple"></tw-tag>,<tw-tag name="AS" color="yellow"></tw-tag>,<tw-tag name="MR" color="green"></tw-tag>,<tw-tag name="Severe_AR" color="gray"></tw-tag>,<tw-tag name="mitral_stenosis" color="orange"></tw-tag><tw-passagedata pid="1" name="Will ii cardiovascular" tags="" position="2922,4" size="100,100">A pretend- examination aid to help with summarizing
 
 1. End of bed:
 
@@ -227,11 +227,20 @@ choose (random:1,3)
 * 3 [[13c]]</tw-passagedata><tw-passagedata pid="48" name="13a" tags="" position="2433,3772" size="100,100">Liver not pulsatile or enlarged
 Clinically no ascites
 
-[[14]]</tw-passagedata><tw-passagedata pid="49" name="14" tags="" position="2436,3922" size="100,100">In summary, I was asked to examine Mr/s Willii. s/he presented with dyspnoea. The most pertinent finding was of a ______ murmur loudest over the ___. This in conjunction with ____ pulse, ___ pulse pressure, and ___ suggests a diagnosis of
+[[14]]</tw-passagedata><tw-passagedata pid="49" name="14" tags="" position="2434.3333333333335,3922" size="100,100">In summary, I was asked to examine Mr/s Willii. s/he presented with dyspnoea. The most pertinent finding was of a ______ murmur loudest over the ___. This in conjunction with ____ pulse, ___ pulse pressure, and ___ suggests a diagnosis of
 [[Mitral regurgitation]]
 [[mitral stenosis]]
 [[aortic stenosis]]
-[[aortic regurgitation]]</tw-passagedata><tw-passagedata pid="50" name="Mitral regurgitation" tags="MR" position="2610,4073" size="100,100">In summary, I was asked to examine Mr/s Willii. s/he presented with dyspnoea. The most pertinent finding was of a pansystolic murmur loudest over the apex, and radiating to the axilla. This is most likely to be [[mitral regurgitation with a differential being]] </tw-passagedata><tw-passagedata pid="51" name="mitral regurgitation with a differential being" tags="MR" position="2631,4216" size="100,100">aortic stenosis. 
+[[aortic regurgitation]]
+
+
+Presentation in this order:
+-	diagnosis
+-	aetiology
+-	Severity
+-	Complications
+-	Assessment
+</tw-passagedata><tw-passagedata pid="50" name="Mitral regurgitation" tags="MR" position="2610,4073" size="100,100">In summary, I was asked to examine Mr/s Willii. s/he presented with dyspnoea. The most pertinent finding was of a pansystolic murmur loudest over the apex, and radiating to the axilla. This is most likely to be [[mitral regurgitation with a differential being]] </tw-passagedata><tw-passagedata pid="51" name="mitral regurgitation with a differential being" tags="MR" position="2631,4216" size="100,100">aortic stenosis. 
 tricuspid regurg...
 VSD
 HCM
@@ -555,7 +564,13 @@ choose (random: 1, 2)
 
 
 
-
+...or you could try
+[[Will ii cardiovascular]] 
+[[Will ii respiratory]]
+[[Will ii abdominal]]
+[[Will ii neuro]]
+[[Will ii hands]]
+[[Will ii thyroid]]
 
 
 </tw-passagedata><tw-passagedata pid="99" name="Will ii respiratory" tags="" position="12,275" size="100,100">(set:$age to (random: 20, 100))
@@ -609,15 +624,15 @@ You have |amount&gt;[$counter] seconds left!
 (if: $event is 1)[(set: $gender to &quot;woman&quot;)]\
 (if: $event is 2)[(set: $gender to &quot;man&quot;)]
 
-(set: $diagnosis to (random: 1, 13))
-(if: $diagnosis is 1 or 2)[(set: $deficit to &quot;difficulty walking&quot;)]\
+(set: $diagnosis to (random: 1, 14))
+(if: $diagnosis is 2)[(set: $deficit to &quot;difficulty walking&quot;)]\
 (if: $diagnosis is 3 or 4)[(set: $deficit to &quot;difficulty walking&quot;)]\
 (if: $diagnosis is 5)[(set: $deficit to &quot;difficulty carrying the baby&quot;)]\
 (if: $diagnosis is 6)[(set: $deficit to &quot;leg weakness&quot;)]\
-(if: $diagnosis is 7)[(set: $deficit to &quot;vision problems&quot;)]\
-(if: $diagnosis is 8 or 9)[(set: $deficit to &quot;difficulty walking&quot;)]\
+(if: $diagnosis is 7 or 12)[(set: $deficit to &quot;vision problems&quot;)]\
+(if: $diagnosis is 8 or 9 or 13)[(set: $deficit to &quot;difficulty walking&quot;)]\
 (if: $diagnosis is 10 or 11)[(set: $deficit to &quot;difficulty standing up&quot;)]
-
+(if: $diagnosis is 1 or 14)[(set: $deficit to &quot;difficulty talking&quot;)]
 Will ii is a  $age year old $gender who presents with $deficit. Please examine.
 
 [[observe generally|observe neuro]]
@@ -649,10 +664,12 @@ You have |amount&gt;[$counter] seconds left!
 (elseif: $diagnosis is 8)[CIDP]\
 (elseif: $diagnosis is 9)[muscular dystrophy]\
 (elseif: $diagnosis is 10)[myotonic dystrophy]\
+(elseif: $diagnosis is 11)[Parkinson&#39;s disease]\
 (elseif: $diagnosis is 12)[Myasthenia gravis]\
 (elseif: $diagnosis is 13)[inclusion body myositis]\
-(elseif: $diagnosis is 11)[Parkinson&#39;s disease]
-]</tw-passagedata><tw-passagedata pid="102" name="Will ii hands" tags="" position="1929,1" size="100,100">(set:$age to (random: 20, 100))
+(elseif: $diagnosis is 14)[Gerstmann syndrome]\
+]
+</tw-passagedata><tw-passagedata pid="102" name="Will ii hands" tags="" position="1929,1" size="100,100">(set:$age to (random: 20, 100))
 (set: $event to (random: 1, 2)) 
 (if: $event is 1)[(set: $gender to &quot;woman&quot;)]
 (if: $event is 2)[(set: $gender to &quot;man&quot;)]
@@ -1049,7 +1066,7 @@ Hands: 2nd/3rd MTPJ arthropathy. Signs of finger pricks for glucometer.
 [[causes of massive, moderate and mild hepatomegaly]]
 [[what peripheral findings are specific for alcoholic liver disease?]]
 [[What peripheral findings are specific for portal hypertension?]]
-[[What would you be looking for on an ascites tap?]]</tw-passagedata><tw-passagedata pid="126" name="you think there&#39;s kidney disease" tags="" position="3653.3333333333335,1022" size="100,100">[[renal 1]]
+[[What would you be looking for on an ascites tap?]]</tw-passagedata><tw-passagedata pid="126" name="you think there&#39;s kidney disease" tags="" position="3653,1022" size="100,100">[[renal 1]]
 
 -	bilateral upper quadrant masses resonant on percussion, sometimes can get above, ballottable.
 -	But the liver can be enlarged as well.
@@ -1093,7 +1110,7 @@ o	popliteal
 ●	Leg ulcers: sickle cell, thalass, TTP
 ●	haemolysis: RUQ tenderness
 
-[[investigations for haematological causes]]</tw-passagedata><tw-passagedata pid="128" name="renal mass differentials" tags="" position="3725,1195.3333333333333" size="100,100">●	polycystic kidney doisease (may be unilateral)
+[[investigations for haematological causes]]</tw-passagedata><tw-passagedata pid="128" name="renal mass differentials" tags="" position="3725,1195" size="100,100">●	polycystic kidney doisease (may be unilateral)
 	often also HT, proteinuria (usually &lt;2g/day), haematuria (bleeds into cysts), anaemia (due to CKD), but not normally as bad as expected stage for stage with other causes of CKD,
 	30% also have hepatic cysts
 	3% → subarachnoid haemorrhage 2⁰ intracerebral aneurysm, screen if family Hx.
@@ -1548,7 +1565,7 @@ check for bulk, fasciculation, abnormal posture, abnormal movement
 (elseif: $diagnosis is 10)[myotonic dystrophy]\
 (elseif: $diagnosis is 11)[Parkinson&#39;s disease]
 (elseif: $diagnosis is 12)[Myasthenia gravis]
-]</tw-passagedata><tw-passagedata pid="186" name="observe face neuro" tags="" position="984,242" size="100,100">facial expressions, facial asymmetry, craniotomy scars, ptosis, baldness, squint or loss of expression.
+]</tw-passagedata><tw-passagedata pid="186" name="observe face neuro" tags="" position="982.3333333333334,242" size="100,100">facial expressions, facial asymmetry, craniotomy scars, ptosis, baldness, squint or loss of expression.
 Voice. 
 
 (if: $diagnosis is 7)[subtle difference in eyes, otherwise normal]\
@@ -1559,9 +1576,11 @@ cataracts, frontal balding and inability to release the hand
 grip]\
 (elseif: $diagnosis is 11)[Hypomimia, Hypophonia]\
 (elseif: $diagnosis is 12)[&lt;img src=&quot;https://basicmedicalkey.com/wp-content/uploads/2016/12/B9780702033865000736_f066-001-9780702033865.jpg&quot;  width=&quot;500&quot; height=&quot;600&quot;&gt;]\
+(elseif: $diagnosis is 13)[subtle facial droop]\ 
 (else:)[&lt;img src=&quot;https://image.shutterstock.com/image-illustration/isolated-yellow-smiling-face-upper-600w-677579845.jpg&quot;  width=&quot;500&quot; height=&quot;600&quot;&gt;]
 
 [[test vision, fundoscopy]]
+[[speech exam]]
 
 (link:&quot;reveal the diagnosis&quot;)[(show:?truth)]
 |truth)[
@@ -1586,8 +1605,10 @@ Depending on what you find, you may also want to test balance:
 – Romberg’s sign (see below).
 – The pull test (see below).
 
-(if: $diagnosis is 7)[nil significant. Time is ticking...]
-(if: $diagnosis is 10)[slow to rise from chair. High steppage gait]
+(if: $diagnosis is 3)[truncal ataxia, broad based ataxic gait. Titubation on standing still. Rhomberg&#39;s positive (this doesn&#39;t go for all cerebellar diseases, so don&#39;t go assuming it&#39;s going to be a good idea to say so)]\
+(elseif: $diagnosis is 7)[nil significant. Time is ticking...]\
+(elseif: $diagnosis is 10)[slow to rise from chair. High steppage gait]
+
 [[face screening|observe face neuro]]
 [[upper limb screening]]
 [[observe hands|observe arms neuro]]
@@ -1626,7 +1647,7 @@ Depending on what you find, you may also want to test balance:
 (elseif: $diagnosis is 10)[myotonic dystrophy]\
 (elseif: $diagnosis is 11)[Parkinson&#39;s disease]
 (elseif: $diagnosis is 12)[Myasthenia gravis]
-]</tw-passagedata><tw-passagedata pid="189" name="UL power neuro" tags="" position="1139,653" size="100,100">
+]</tw-passagedata><tw-passagedata pid="189" name="UL power neuro" tags="" position="1139,653" size="100,100">(if: $diagnosis is 3)[power intact, but rebound phenomenon on letting go]\
 (if: $diagnosis is 7)[nil significant. Time is ticking...]\
 (if: $diagnosis is 9)[weakness of upper limb girdle muscles and the upper arms. Bicep and triceps involved with sparing of the forearm muscles.]\
 (if: $diagnosis is 10)[difficulty releasing grip. Distal weakness]
@@ -1664,10 +1685,12 @@ but see: &lt;a href=&quot;https://eyewiki.aao.org/Argyll_Robertson_Pupils&quot;&
 (elseif: $diagnosis is 8)[CIDP]\
 (elseif: $diagnosis is 9)[muscular dystrophy]\
 (elseif: $diagnosis is 10)[myotonic dystrophy]\
+(elseif: $diagnosis is 11)[Parkinson&#39;s disease]\
 (elseif: $diagnosis is 12)[Myasthenia gravis]\
-(elseif: $diagnosis is 13)[inclusion body myositis]\
-(elseif: $diagnosis is 11)[Parkinson&#39;s disease]
-]</tw-passagedata><tw-passagedata pid="196" name="eye movements" tags="" position="984,842" size="100,100">(if: $diagnosis is 7)[&lt;img src=&quot;http://www.mrcophth.com/ocularmotility/superioroblique.JPG&quot;&gt; or if that&#39;s too hard, &lt;img src=&quot;http://eyerounds.org/atlas/pages/CN-VI-schwannoma/CNVI-schwanoma.jpg&quot;&gt;. Convergence relatively normal probably]\
+(elseif: $diagnosis is 13)[inclusion body myositis]
+
+]</tw-passagedata><tw-passagedata pid="196" name="eye movements" tags="" position="984,842" size="100,100">(if: $diagnosis is 3)[downbeat nystagmus, impaired smooth pursuits]\
+(elseif: $diagnosis is 7)[&lt;img src=&quot;http://www.mrcophth.com/ocularmotility/superioroblique.JPG&quot;&gt; or if that&#39;s too hard, &lt;img src=&quot;http://eyerounds.org/atlas/pages/CN-VI-schwannoma/CNVI-schwanoma.jpg&quot;&gt;. Convergence relatively normal probably]\
 (elseif: $diagnosis is 2)[&lt;img src=&quot;http://casemed.case.edu/clerkships/neurology/NeurLrngObjectives/visual%20bino.jpg&quot;&gt;]\
 (else:)[FROEM normal convergence]&lt;9 included&gt;
 
@@ -1716,10 +1739,13 @@ I would like to investigate him further with a FBC, LFTs, renal function, and a 
 (elseif: $diagnosis is 10)[bilateral foot drop. Symmetric distal weakness.]
 (else:)[Normal power]
 
-[[lower limb reflexes]]</tw-passagedata><tw-passagedata pid="204" name="lower limb reflexes" tags="" position="1268,845" size="100,100">(if: diagnosis is 10)[suppressed deep tendon reflexes]\
+[[lower limb reflexes]]</tw-passagedata><tw-passagedata pid="204" name="lower limb reflexes" tags="" position="1268,845" size="100,100">(if: $diagnosis is 3)[pendular knee jerks, suppressed ankle jerks]
+(elseif: $diagnosis is 10)[suppressed deep tendon reflexes]\
 (else:)[normal symmetric]
 
-[[lower limb coordination]]</tw-passagedata><tw-passagedata pid="205" name="lower limb coordination" tags="" position="1268,995" size="100,100">[[lower limb sensation]]</tw-passagedata><tw-passagedata pid="206" name="lower limb sensation" tags="" position="1268,1145" size="100,100">[[summary neuro]]</tw-passagedata><tw-passagedata pid="207" name="V" tags="" position="984,992" size="100,100">Facial sensation
+[[lower limb coordination]]</tw-passagedata><tw-passagedata pid="205" name="lower limb coordination" tags="" position="1268,996.6666666666666" size="100,100">[[lower limb sensation]]</tw-passagedata><tw-passagedata pid="206" name="lower limb sensation" tags="" position="1268,1145" size="100,100">(if: $diagnosis is 3)[impaired sensation bilateral lower limbs to mid thighs: light touch, sharp touch, proprioception, vibration]
+
+[[summary neuro]]</tw-passagedata><tw-passagedata pid="207" name="V" tags="" position="984,992" size="100,100">Facial sensation
 Also check temporalis and masseter power by clenching teeth
 (if: $diagnosis is 10)[reduced power temporalis and masseter]
 
@@ -1734,7 +1760,14 @@ Demonstrate perioral weakness by asking pt to blow out a candle.
 [[IX]]</tw-passagedata><tw-passagedata pid="210" name="IX" tags="" position="984,1442" size="100,100">[[X]]</tw-passagedata><tw-passagedata pid="211" name="X" tags="" position="984,1592" size="100,100">[[XI]]</tw-passagedata><tw-passagedata pid="212" name="XI" tags="" position="984,1742" size="100,100">(if: $diagnosis is 10)[check neck flexion also with hand on forehead. Weak in all of these.]
 
 
-[[XII]]</tw-passagedata><tw-passagedata pid="213" name="XII" tags="" position="984,1892" size="100,100">[[summary neuro]]</tw-passagedata><tw-passagedata pid="214" name="summary neuro" tags="" position="984,2042" size="100,100">(if: $diagnosis is 9)[The patient has myopathic facies. There is generalised wasting and weakness of the facial muscles without ptosis or frontotemporal balding. Eye movements are normal. There is wasting and weakness of the upper limb girdle muscles and upper arms. The superior margins of the scapulae are visible from the front above the clavicles and there is winging of the scapulae. There is abdominal muscle weakness and the lower abdominal muscles are weakner than the upper abodminal muscles. There is bilateral weakness of foot dorsifleixion with foot drop. The lower limb girdle muscles are intact. The diagnosis is facio-scapulo-humeral dystrophy. I would like to proceed by assessing for sensorineural hearing loss, and fundoscopy for retinal telangiectasia]\
+[[XII]]</tw-passagedata><tw-passagedata pid="213" name="XII" tags="" position="984,1892" size="100,100">(if: $diagnosis is 3)[scanning speech b - ri- tish - con- stit- u tion]
+[[summary neuro]]</tw-passagedata><tw-passagedata pid="214" name="summary neuro" tags="" position="984,2042" size="100,100">(if: $diagnosis is 3)[The patient has ataxic gait. On examination of the eyes, there is downbeat nystagmus, and impaired smooth pursuit. The patient has scanning speech. On examination of upper limbs there is mild dysdiadochokinesis, and impaired finger nose testing with dysmetria. There is rebound phenomenon bilaterally. On examination of the lower limbs there is an impaired heel-shin test, hypotonia and dyssynergia, as well as reduced ankle jerk with impaired sensation distally but normal power. My differentials include CANVAS syndrome, Friedrich&#39;s ataxia and MSA-C. 
+
+I would like to perform nerve conduction studies, expecting absence of sensory nerve action potentials in all limbs. 
+I would like an MR brain expecting cerebellar atrophy. 
+If the patient has vestibulopathy on further investigations, this would lean towards CANVAS syndrome, an autosomal recessive disorder.]\
+\
+(if: $diagnosis is 9)[The patient has myopathic facies. There is generalised wasting and weakness of the facial muscles without ptosis or frontotemporal balding. Eye movements are normal. There is wasting and weakness of the upper limb girdle muscles and upper arms. The superior margins of the scapulae are visible from the front above the clavicles and there is winging of the scapulae. There is abdominal muscle weakness and the lower abdominal muscles are weakner than the upper abodminal muscles. There is bilateral weakness of foot dorsifleixion with foot drop. The lower limb girdle muscles are intact. The diagnosis is facio-scapulo-humeral dystrophy. I would like to proceed by assessing for sensorineural hearing loss, and fundoscopy for retinal telangiectasia]\
 \
 (if: $diagnosis is 10)[ This patient has myopathic facies. Frontotemporal balding, ptosis and previous cataracts. There is wasting of the facial muscles, temporalis, masseter, sternomastoids and the small muscles of the hands. There is difficulty in opening the eyes after firm closure. On examination of the limbs there is distal wasting and weakness with impairment of fine movements of the hands and foot drop. The deep tendon reflexes are depressed. There is evidence of myotonia. There is a high steppage gait.
 The diagnosis is myotonic dystrophy. 
@@ -1743,14 +1776,20 @@ The diagnosis is myotonic dystrophy.
 [[other causes of myotonia]]
 [[is this DM1 or 2?]]
 [[ddx distal wasting and weakness]]
-]</tw-passagedata><tw-passagedata pid="215" name="further examination and history myotonic dystrophy" tags="" position="810,2182" size="100,100">If I had time, I would wish to ask about a family history of same. 
+]
+
+(if: $diagnosis is 14)[
+[[Further investigations]]
+[[aetiologies aphasia]]
+]
+</tw-passagedata><tw-passagedata pid="215" name="further examination and history myotonic dystrophy" tags="" position="810,2182" size="100,100">If I had time, I would wish to ask about a family history of same. 
 
 I would examine for and ask about 
 - diabetes, 
 - cardiomyopathy, valvular heart disease, arrhythmias, conduction defects, 
 - hypogonadism and goitre.
 - problems with anaesthesia, pneumonia
-- GI complications: dysphagia, reflux, hypomotility, malabsorption, bacterial overgrowth, megacolon</tw-passagedata><tw-passagedata pid="216" name="investigations myotonic dystrophy" tags="" position="1210,2177" size="100,100">Genetic testing looking for exspanding CTG repeats
+- GI complications: dysphagia, reflux, hypomotility, malabsorption, bacterial overgrowth, megacolon</tw-passagedata><tw-passagedata pid="216" name="investigations myotonic dystrophy" tags="" position="1096.6666666666667,2332" size="100,100">Genetic testing looking for exspanding CTG repeats
 
 ECG looking for 
 prolonged PR, prolonged QTc, ST and T wave changes, low voltage P waves, dominant R wave in V1, QRS widening. SVT, VT, AF and flutter.  
@@ -1817,7 +1856,50 @@ Both are autosomal dominant.</tw-passagedata><tw-passagedata pid="219" name="ddx
 -	Urine analysis (specific gravity, pH, glucose, blood, protein) + sediment (red cells, casts)
 -	Weight
 
-[[summary renal]]</tw-passagedata><tw-passagedata pid="229" name="summary renal" tags="" position="3605,2522" size="100,100">[[renal mass differentials]] </tw-passagedata></tw-storydata>
+[[summary renal]]</tw-passagedata><tw-passagedata pid="229" name="summary renal" tags="" position="3605,2522" size="100,100">[[renal mass differentials]] </tw-passagedata><tw-passagedata pid="230" name="Further investigations" tags="" position="847.3333333333334,2305.3333333333335" size="100,100">CTA brain/ MR brain
+Carotid USS
+ECG / holter
+CXR</tw-passagedata><tw-passagedata pid="231" name="aetiologies aphasia" tags="" position="1179,2192" size="100,100">-	commonest = stroke, ddx neoplastic, demyelinating MS infective abscess trauma, encephalopathies, dementias (primary progressive aphasia in FTD, AD)</tw-passagedata><tw-passagedata pid="232" name="speech exam" tags="" position="864,392" size="100,100">Screening:
+NIHSS kitchen scene
+Naming watch, face, buckle, strap
+Is this a hat?
+
+[[reception]]</tw-passagedata><tw-passagedata pid="233" name="reception" tags="" position="864,542" size="100,100">one-step command
+
+three-step command
+
+[[expression]]</tw-passagedata><tw-passagedata pid="234" name="expression" tags="" position="864,692" size="100,100">name all the animals you can think of
+repeat &quot;I only know that John is the one to help today&quot;
+
+[[articulation]]</tw-passagedata><tw-passagedata pid="235" name="articulation" tags="" position="864,842" size="100,100">-	Pah pah pah, Tuh tuh tuh, LALALA Kuh kuh kuh
+cough
+-	mamma /papapa- lips/ facial n
+-	lalala  tongue/hypoglossal
+-	Kakaka - vague nasal speech. Palatal palsy
+
+[[conduction]]
+[[visual fields]] </tw-passagedata><tw-passagedata pid="236" name="conduction" tags="" position="864,992" size="100,100">month of year
+
+[[reading]]</tw-passagedata><tw-passagedata pid="237" name="reading" tags="" position="864,1142" size="100,100">[[writing]]</tw-passagedata><tw-passagedata pid="238" name="writing" tags="" position="864,1292" size="100,100">
+
+If aphasia,
+Further exam:
+if wernickes check for vis field defect
+if brocas check for motor deficits
+check for vis field defects for homonymous hemianopia or quadrantanopia
+do UL and LL for hemiparesis.
+would want to complete the exam checking for higher functions involving frontal and/or temporal lobe
+
+Gerstmanns check for
+1) Acalculia
+2) Left Right disorientation
+3) Finger agnosis
+4) Agraphia
+
+Carotid bruit
+AF
+
+[[summary neuro]] </tw-passagedata></tw-storydata>
 
 <script title="Twine engine code" data-main="harlowe">"use strict";function _defineProperty(e,t,n){return t in e?Object.defineProperty(e,t,{value:n,enumerable:!0,configurable:!0,writable:!0}):e[t]=n,e}function _toConsumableArray(e){if(Array.isArray(e)){for(var t=0,n=Array(e.length);t<e.length;t++)n[t]=e[t];return n}return Array.from(e)}var _slicedToArray=function(){function e(e,t){var n=[],r=!0,i=!1,o=void 0;try{for(var a,s=e[Symbol.iterator]();!(r=(a=s.next()).done)&&(n.push(a.value),!t||n.length!==t);r=!0);}catch(e){i=!0,o=e}finally{try{!r&&s.return&&s.return()}finally{if(i)throw o}}return n}return function(t,n){if(Array.isArray(t))return t;if(Symbol.iterator in Object(t))return e(t,n);throw new TypeError("Invalid attempt to destructure non-iterable instance")}}(),_typeof="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e};!function(){/**
  * @license almond 0.3.3 Copyright jQuery Foundation and other contributors.
